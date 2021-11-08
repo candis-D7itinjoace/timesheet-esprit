@@ -5,7 +5,7 @@ pipeline{
         dockerImage = 'timesheet' 
     }
   tools {
-      maven 'Maven 3.8.1'
+      maven "maven"
     }
   
     agent any
