@@ -22,14 +22,14 @@ pipeline{
         stage('Maven Clean Compile Package'){
             steps {
                 
-                sh 'mvn clean install'
+                sh 'mvn clean install -Dmaven.test.skip=true'
             }
             
         }
         stage('Maven Test'){
             steps {
                 echo "Lancer les testes Maven "
-                sh 'mvn test'
+                
             }
         }
 
