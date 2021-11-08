@@ -4,6 +4,10 @@ pipeline{
         registryCredential = 'dockerhub' 
         dockerImage = 'timesheet' 
     }
+  tools {
+      maven "3.8.1"
+    }
+  
     agent any
    
     stages{
