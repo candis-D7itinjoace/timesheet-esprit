@@ -18,14 +18,14 @@ pipeline{
         stage('Maven Clean Compile Package'){
             steps {
                 
-                sh 'sudo ./mvnw clean install'
+                sh 'mvn clean install'
             }
             
         }
         stage('Maven Test'){
             steps {
                 echo "Lancer les testes Maven "
-                sh 'sudo ./mvnw test'
+                sh 'mvn test'
             }
         }
 
