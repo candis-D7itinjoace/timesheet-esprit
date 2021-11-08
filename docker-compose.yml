@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+
+ nexus:
+  image: sonatype/nexus3
+  container_name: nexus
+  ports:
+    - "8983:8081"
+  volumes:
+    - "$PWD/nexus_data:/nexus-data"
+
+ jenkins:
+  image: jenkins/jenkins:lts
+  container_name: jenkins
+  ports:
+    - "8981:8080"
+  volumes:
+    - "$PWD/jenkins:/var/jenkins_home"
+    
+ timesheet:
+   build: .
+   restart: always
+   container_name: timesheet
+   ports:
+     - "8984:8082"
+   depends_on:
+     - mysql_db
+      
+ mysql_db:
+  image: "mysql:8.0"
+  container_name: mysql
+  restart: always
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: "timesheet-devops"
+    MYSQL_USER: "timesheet"
+    MYSQL_PASSWORD: "timesheet"
+    MYSQL_ROOT_PASSWORD: "timesheet"
+    
+

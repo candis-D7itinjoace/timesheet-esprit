@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+ jenkins:
+  image: jenkins/jenkins:lts
+  container_name: jenkins
+  ports:
+    - "8981:8080"
+  volumes:
+    - "$PWD/jenkins:/var/jenkins_home"
